@@ -1,0 +1,22 @@
+﻿@using EntityLayer.Concrete
+@model List<Review>
+
+<section class="intro-section">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="intro-text-box text-box text-white">
+                        <div class="top-meta">@item.Date</div>
+                        <h4><b>@item.GameName</b></h4>
+                        <br />
+                        <h5>@item.Title</h5>
+                        <p>@item.Description.Substring(0, 25)...</p>
+                        <a href="/Review/ReviewDetails/@item.ReviewId" class="read-more">Daha Fazlası <img src="~/endgame-master/img/icons/double-arrow.png" alt="#" /></a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

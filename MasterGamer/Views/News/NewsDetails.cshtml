@@ -1,0 +1,47 @@
+﻿@model EntityLayer.Concrete.News
+@{
+    ViewData["Title"] = "NewsDetails";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="zxx">
+<body>
+    <!-- Page top section -->
+    <section class="page-top-section set-bg" data-setbg="/endgame-master/img/page-top-bg/1.jpg">
+        <div class="page-info">
+            <h2>Haberler</h2>
+            <div class="site-breadcrumb">
+                <a href="/Default/Index/">Anasayfa</a>  /
+                <span>Haber</span>
+            </div>
+        </div>
+    </section>
+    <!-- Page top end-->
+    <!-- Games section -->
+    <section class="games-single-page">
+        <div class="container">
+            <div class="game-single-preview">
+                <img src="@Model.ImageUrl" alt="">
+            </div>
+            <div class="row">
+                <div class="col-xl-9 col-lg-8 col-md-7 game-single-content">
+                    <div class="gs-meta">@Model.Date.ToShortDateString()</div>
+                    <h2 class="gs-title">@Model.Title</h2>
+                    <p>@Model.Description</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Games end-->
+
+    <section class="game-author-section">
+        <div class="container">
+            <div class="game-author-pic set-bg" data-setbg="@Model.AppUser.ImageUrl"></div>
+            <div class="game-author-info">
+                <h4>@Model.AppUser.Name @Model.AppUser.Surname tarafından yazıldı.</h4>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿@using EntityLayer.Concrete
+@model List<Review>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>İncelemeler</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Görsel</th>
+        <th>Tanıtım Metni</th>
+        <th>Oyun İsmi</th>
+        <th>Başlık</th>
+        <th>Açıklama</th>
+        <th>Alt Başlık</th>
+        <th>Açıklama 2</th>
+        <th>Tarih</th>
+        <th>Rating</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ReviewId</td>
+            <td>@item.ImageUrl</td>
+            <td>@item.Introduction</td>
+            <td>@item.GameName</td>
+            <td>@item.Title</td>
+            <td>@item.Description</td>
+            <td>@item.Header</td>
+            <td>@item.Description2</td>
+            <td>@item.Date</td>
+            <td>@item.Rating</td>
+            <td><a href="/Admin/Review/UpdateReview/@item.ReviewId" class="btn btn-outline-danger">Güncelle</a></td>
+            <td><a href="/Admin/Review/DeleteReview/@item.ReviewId" class="btn btn-outline-primary">Sil</a></td>
+        </tr>
+    }
+</table>
+<a href="/Admin/Review/AddReview" class="btn btn-outline-primary">Yeni İnceleme Yaz</a>

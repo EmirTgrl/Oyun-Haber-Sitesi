@@ -1,0 +1,19 @@
+﻿@model NewsletterSubscribeModel
+<section class="newsletter-section">
+    <div class="container">
+        <h2>Oyun dünyasında yaşanan her şeyden haberdar olmak için abone olun.</h2>
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+        }
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+        }
+        <form class="newsletter-form" asp-controller="Newsletter" asp-action="Subscribe" method="post">
+            <input type="text" placeholder="E POSTA ADRESİNİZİ GİRİNİZ" asp-for="Email" required>
+            <button class="site-btn" type="submit">Abone Ol <img src="~/endgame-master/img/icons/double-arrow.png" /></button>
+        </form>
+    </div>
+</section>

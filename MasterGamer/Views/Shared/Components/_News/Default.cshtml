@@ -1,0 +1,47 @@
+﻿@using EntityLayer.Concrete
+@model List<News>
+
+<section class="blog-section spad">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-xl-9 col-lg-8 col-md-7">
+                    <div class="section-title text-white">
+                        <h2>Son Haberler</h2>
+                    </div>
+                    <!-- Blog item -->
+                    <div class="blog-item">
+                        <div class="blog-thumb">
+                            <img src="@item.ImageUrl" alt="">
+                        </div>
+                        <div class="blog-text text-box text-white">
+                            <div class="top-meta">@item.Date.ToShortDateString()</div>
+                            <h3>@item.Title</h3>
+                            <p>@item.Introduction</p>
+                            <a href="/News/NewsDetails/@item.NewsId" class="read-more">Daha Fazlası <img src="~/endgame-master/img/icons/double-arrow.png" /></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-5 sidebar">
+                    <div id="stickySidebar">
+                        <div class="widget-item">
+                            <h4 class="widget-title">En Popüler</h4>
+                            <div class="trending-widget">
+                                <div class="tw-item">
+                                    <div class="tw-thumb">
+                                        <img src="@item.ImageUrl" alt="#">
+                                    </div>
+                                    <div class="tw-text">
+                                        <div class="tw-meta">@item.Date.ToShortDateString()</div>
+                                        <h5>@item.Title</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

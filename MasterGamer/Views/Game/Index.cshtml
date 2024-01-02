@@ -1,0 +1,52 @@
+﻿@using EntityLayer.Concrete
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+@model X.PagedList.IPagedList<Game>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="zxx">
+<body>
+    <!-- Page top section -->
+    <section class="page-top-section set-bg" data-setbg="/endgame-master/img/page-top-bg/2.jpg">
+        <div class="page-info">
+            <h2>Oyunlar</h2>
+            <div class="site-breadcrumb">
+                <a href="/Default/Index/">Anasayfa</a>  /
+                <span>Oyunlar</span>
+            </div>
+        </div>
+    </section>
+    <!-- Page top end-->
+    <!-- Review section -->
+    <section class="review-section">
+        <div class="container">
+            <div class="review-item">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-4">
+                            <div class="review-pic">
+                                <img src="@item.ImageUrl" height="300px" width="300px">
+                            </div>
+                            <h4>@item.Name</h4>
+                            <a href="@item.SteamUrl" class="read-more">Oyunun sayfasına git <img src="~/endgame-master/img/icons/double-arrow.png" /></a>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="site-pagination">
+                @Html.PagedListPager((IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
+           {
+               LiElementClasses = new List<string>
+                {"page-link"}
+           })
+            </div>
+        </div>
+    </section>
+</body>
+</html>
